@@ -1,0 +1,274 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{newchronologytimeline}[2010/6/12 v1.0 Horizontal timeline]
+\RequirePackage{calc}
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\usetikzlibrary{patterns}
+% MOVED NEW DEFINITIONS (COUNTERS/LENGTHS/BOXES)
+\newcounter{step}\newcounter{stepstart}\newcounter{stepstop}%
+\newcounter{yearstart}\newcounter{yearstop}\newcounter{deltayears}%
+\newlength{\xstart}\newlength{\xstop}\newlength{\xinterval}\newlength{\xfoo}%
+\newlength{\unit}\newlength{\timelinewidth}%
+\newsavebox{\timelinebox}%
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{decorations.markings}
+
+\pgfdeclarepatternformonly[\LineSpace]{my north east lines}{\pgfqpoint{-1pt}{-1pt}}{\pgfqpoint{\LineSpace}{\LineSpace}}{\pgfqpoint{\LineSpace}{\LineSpace}}%
+{
+    \pgfsetlinewidth{0.4pt}
+    \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+    \pgfpathlineto{\pgfqpoint{\LineSpace + 0.1pt}{\LineSpace + 0.1pt}}
+    \pgfusepath{stroke}
+}
+
+\pgfdeclarepatternformonly[\LineSpace]{my north west lines}{\pgfqpoint{-1pt}{-1pt}}{\pgfqpoint{\LineSpace}{\LineSpace}}{\pgfqpoint{\LineSpace}{\LineSpace}}%
+{
+    \pgfsetlinewidth{0.4pt}
+    \pgfpathmoveto{\pgfqpoint{0pt}{\LineSpace}}
+    \pgfpathlineto{\pgfqpoint{\LineSpace + 0.1pt}{-0.1pt}}
+    \pgfusepath{stroke}
+}
+
+\newdimen\LineSpace
+\tikzset{
+    line space/.code={\LineSpace=#1},
+    line space=2.5pt
+}
+
+
+\newenvironment{chronology}[5][5]{%
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{shapes.multipart}
+  \usetikzlibrary{decorations.markings}
+  %\newcounter{step}\newcounter{stepstart}\newcounter{stepstop}%
+  %\newcounter{yearstart}\newcounter{yearstop}\newcounter{deltayears}%
+  %\newlength{\xstart}\newlength{\xstop}%
+  %\newlength{\unit}\newlength{\timelinewidth}%
+  \setcounter{step}{#1}%
+  \setcounter{yearstart}{#2}\setcounter{yearstop}{#3}%
+  \setcounter{deltayears}{\theyearstop-\theyearstart}%
+  \setlength{\unit}{#4}%
+  \setlength{\timelinewidth}{#5}%
+  \pgfmathsetcounter{stepstart}%
+                    {\theyearstart+\thestep-mod(\theyearstart,\thestep)}%
+                    \pgfmathsetcounter{stepstop}{\theyearstop-mod(\theyearstop,\thestep)}%
+                    \addtocounter{step}{\thestepstart}%
+                    %\newsavebox{\timelinebox}%
+                    \begin{lrbox}{\timelinebox}%
+                      \begin{tikzpicture}[>=latex'][baseline={(current bounding box.north)}]%
+                        \draw [decoration={markings,mark=at position 1 with {\arrow[scale=3,black]{>}}},
+                          postaction={decorate},
+                          shorten >=0.4pt] (0,0) -- (\thedeltayears*\unit+\unit, 0);%
+                        \foreach \x in {1,...,\thedeltayears}%
+                        \draw[xshift=\x*\unit] (0,-.1\unit) -- (0,.1\unit);%
+                        \addtocounter{deltayears}{1}%
+                        \foreach \x in {\thestepstart,\thestep,...,\thestepstop}{%
+                          \pgfmathsetlength\xstop{(\x-\theyearstart)*\unit}%
+                          \draw[xshift=\xstop] (0,-.3\unit) -- (0,.3\unit);%
+                          \node at (\xstop,0) [below=.3\unit] {\x};}}{%
+                      \end{tikzpicture}%
+                    \end{lrbox}%
+                    \raisebox{2ex}{\resizebox{\timelinewidth}{!}{\usebox{\timelinebox}}}}%
+
+\newcommand{\oldundertimeline}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=gray,draw=none,opacity=0.5]%
+  (\xstop, 0) circle (.2\unit)%
+  node[opacity=1,rotate=270,right=0\unit] {#3};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=gray,draw=none,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-0.4\unit) rectangle%
+  node[opacity=1,rotate=270,right=0\unit] {#3} (\xstop,.0\unit);%
+  \fi}%
+\newcommand{\undertimeline}[5][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=#5,draw=#5,opacity=0.5]%
+  (\xstop, -0.2\unit) circle (.2\unit)%
+  node[opacity=1,rotate=0,below=#4\unit,right={0\unit-0.2\unit}] {#3};%
+  \draw[fill=#5,draw=#5,opacity=1]%
+  (\xstop, -0.4\unit) -- %
+  (\xstop, -1*#4\unit+1.15\unit-0.4\unit) circle (.05\unit);%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=#5,draw=#5,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-0.4\unit) rectangle%
+  node[opacity=1,rotate=0,below=#4\unit,right={0\unit-0.5*(\xstop-\xstart)}] {#3} (\xstop,.0\unit);%
+  \draw[fill=black,draw=black,opacity=1]%
+  (\xstart+0.2\unit, -0.4\unit) -- %
+  (\xstart+0.2\unit, -1*#4\unit+1.15\unit-0.4\unit) circle (.05\unit);%
+  \fi}%
+\newcommand{\overtimeline}[5][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=#5,draw=#5,opacity=0.5]%
+  (\xstop, 0.2\unit) circle (.2\unit)%
+  node[opacity=1,rotate=0,above=#4\unit,right={0\unit-0.2\unit}] {#3};%
+  \draw[fill=#5,draw=#5,opacity=1]%
+  (\xstop, 0.4\unit) -- %
+  (\xstop, #4\unit-0.75\unit) circle (.05\unit);%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=#5,draw=#5,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-0.0\unit) rectangle%
+  node[opacity=1,rotate=0,above=#4\unit,right={0\unit-0.5*(\xstop-\xstart)}] {#3} (\xstop,.4\unit);%
+  \draw[fill=black,draw=black,opacity=1]%
+  (\xstart+0.2\unit, 0.4\unit) -- %
+  (\xstart+0.2\unit, #4\unit-0.75\unit) circle (0.05\unit);%
+  \fi}%
+
+\newcommand{\skillline}[5][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=#5,draw=#5,opacity=0.5]%
+  (\xstop, -0.2\unit+0.4*#4*\unit) circle (.2\unit)%
+  node[opacity=1,rotate=0,below=0\unit,right={0\unit+0.2\unit}] {\bf #3};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=#5,draw=#5,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-0.4\unit+0.4*#4*\unit) rectangle%
+  node[opacity=1,rotate=0,below=0\unit,right={0\unit-0.5*(\xstop-\xstart)}] {\bf #3} (\xstop,0.4*#4*\unit);%
+  \fi}%
+
+\newcommand{\toplabel}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=gray,draw=none,opacity=0.5]%
+  (\xstop, -0.2\unit) %circle (.2\unit)%
+  node[opacity=1,rotate=270,below=0\unit,left={0.5\unit}] {#3};%
+  %\draw[fill=black,draw=black,opacity=1]%
+  %(\xstop, -0.4\unit) -- %
+  %(\xstop, -1*#4\unit);%
+  \else%
+  \fi}%
+\newcommand{\bottomlabel}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=black,draw=none,opacity=0.5]%
+  (\xstop, 0.2\unit) %circle (.2\unit)%
+  node[opacity=1,rotate=270,above=0\unit,right={0.5\unit}] {#3};%
+  %\draw[fill=black,draw=black,opacity=1]%
+  %(\xstop, 0.4\unit) -- %
+  %(\xstop, #4\unit);%
+  \else%
+  \fi}%
+\newcommand{\now}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=black,draw=none,opacity=1]%
+  (\xstop, 0.\unit) %circle (0.1\unit)%
+  node[opacity=1,rotate=0,below=0.8\unit] {#3};%
+  %\draw (\xstop-0.1\unit, -0.1\unit) -- %
+  %(\xstop+0.1\unit, 0.1\unit) %
+  %(\xstop-0.1\unit, 0.1\unit) -- %
+  %(\xstop+0.1\unit, -0.1\unit);
+  \draw[decoration={markings,mark=at position 1 with {\arrow[scale=2,black]{>}}},
+    postaction={decorate},
+    shorten >=0.4pt]%
+  (\xstop, -0.8\unit) -- %
+  (\xstop, -0.\unit);%
+  \else%
+  \fi}%
+\newcommand{\event}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=black,draw=none,opacity=0.5]%
+  (\xstop, 0) circle (.2\unit)%
+  node[opacity=1,rotate=45,right=#4\unit] {#3};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=black,draw=none,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-.2\unit) rectangle%
+  node[opacity=1,rotate=45,right=#4\unit] {#3} (\xstop,.2\unit);%
+  \fi}%
+
+\newcommand{\underbracenote}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=none,draw=black,dashed,opacity=1]%
+  (\xstop, 0) %circle (.2\unit)%
+  node[opacity=1,rotate=0,below=#4\unit] {$\underbrace{\hspace{\xinterval}}_\text{#3}$};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \pgfmathsetlength\xinterval{(\xstop-\xstart)}%
+  \draw[fill=none,draw=black,dashed,opacity=1,rounded corners=.2\unit]%
+  (\xstart,-.0\unit) rectangle%
+  node[opacity=1,rotate=0,below=#4\unit] {$\underbrace{\hspace{\xinterval}}_\text{#3}$} (\xstop,.4\unit);%
+  \fi}%
+
+\newcommand{\overbracenote}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=none,draw=black,dashed,opacity=1]%
+  (\xstop, -.4) %circle (.2\unit)%
+  node[opacity=1,rotate=0,above=#4\unit] {$\overbrace{\hspace{\xinterval}}^\text{#3}$};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \pgfmathsetlength\xinterval{(\xstop-\xstart)}%
+  \draw[fill=none,draw=black,dashed,opacity=1,rounded corners=.2\unit]%
+  (\xstart,-.4\unit) rectangle%
+  node[opacity=1,rotate=0,above=#4\unit] {$\overbrace{\hspace{\xinterval}}^\text{#3}$} (\xstop,.0\unit);%
+  \fi}%
+
+\newcommand{\underblob}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[pattern=my north east lines,draw=black,opacity=1]%
+  (\xstop, 0) %circle (.2\unit)%
+  node[opacity=1,rotate=0,below=#4\unit] {};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \pgfmathsetlength\xinterval{(\xstop-\xstart)}%
+  \draw[pattern=my north east lines,draw=none,opacity=1,rounded corners=.2\unit]%
+  (\xstart,-.0\unit) rectangle%
+  node[opacity=1,rotate=0,below=#4\unit] {} (\xstop,.4\unit);%
+  \fi}%
+
+\newcommand{\overblob}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[pattern=my north east lines,draw=black,opacity=1]%
+  (\xstop, -.4) %circle (.2\unit)%
+  node[opacity=1,rotate=0,above=#4\unit] {};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \pgfmathsetlength\xinterval{(\xstop-\xstart)}%
+  \draw[pattern=my north east lines,draw=none,opacity=1,rounded corners=.2\unit]%
+  (\xstart,-.4\unit) rectangle%
+  node[opacity=1,rotate=0,above=#4\unit] {} (\xstop,.0\unit);%
+  \fi}%
+
+\newcommand{\annotation}[4][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=none,draw=none,opacity=1]%
+  (\xstop, 0) circle (.3\unit)%
+  node[opacity=1,rotate=-90,right=#4\unit] {#3};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=none,draw=none,opacity=1,rounded corners=.3\unit]%
+  (\xstart,-.3\unit) rectangle%
+  node[opacity=1,rotate=-90,right=#4\unit] {#3} (\xstop,.3\unit);%
+  \fi}%
+\newcommand{\decimaldate}[3]{(#1-1)/31/12+(#2-1)/12+#3}
+\newcommand{\oldevent}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+  \draw[fill=black,draw=none,opacity=0.5]%
+  (\xstop, 0) circle (.2\unit)%
+  node[opacity=1,rotate=45,right=.5\unit] {#3};%
+  \else%
+  \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+  \draw[fill=black,draw=none,opacity=0.5,rounded corners=.2\unit]%
+  (\xstart,-.2\unit) rectangle%
+  node[opacity=1,rotate=45,right=.5\unit] {#3} (\xstop,.2\unit);%
+  \fi}%
+\endinput
+%%
+%% End of file `chronologyfix.sty'.

@@ -1,0 +1,201 @@
+% Curriculum Vitae of Andrew John Lowe
+\documentclass[a4paper,10pt,twoside,hidelinks]{article}
+%%\renewcommand{\familydefault}{\sfdefault} % Set default font for document
+%%\usepackage[T1]{fontenc}
+\usepackage[cm]{fullpage}
+\usepackage{marvosym}
+\usepackage[sc, osf]{mathpazo}
+\usepackage{tikz}
+%\usepackage[francais,british]{babel} %% British hyphenation patterns
+%\newcommand{\french}[1]{\foreignlanguage{francais}{#1}}
+%% French as an alternative language when needed
+\usepackage{chbibref} % Change name of Bibliography
+\usepackage{multibbl} % Multiple biblographies
+%% \usepackage{draftcopy} %% Print ``DRAFT'' in big letters on each page
+\usepackage[english,cleanlook]{isodate} % Change format of \today
+\usepackage{smallcap} % Do bold small caps, small caps slanted, etc.
+\usepackage{scalefnt} % I'd like to scale the size of fonts
+%\usepackage{ogonek} % Ogoneks
+\usepackage{ifthen} % Conditional statements
+\newboolean{draft} % Add a new boolean
+\setboolean{draft}{false} % Switch to false for the final version!
+\usepackage{amssymb,amsmath} % Use fancy maths symbols
+%\usepackage{rjwmath} % Some more fancy maths symbols, like \widehat{}
+\usepackage{bm} % Enable bold maths symbols
+\usepackage{bold-extra} % Allows access to extra bold fonts for CM OT1 encoding
+\usepackage{color} % Use coloured text
+\usepackage{url} % Allow URLs to be entered like this: \url{...}
+%\usepackage{rotcapt} % Allow rotation of tables, captions, etc.
+\usepackage{rotating} % Allow rotation of tables, captions, etc.
+\usepackage{longtable} % Allow tables to flow over page boundaries
+\usepackage{paralist} % Allow compact itemize listings (no vertical skip)
+\usepackage{tabularx} % Tabulars with adjustable-width columns
+\usepackage{fancyhdr} % Add fancy headers or footers
+\usepackage{lastpage} % Add reference for last page
+\usepackage{abbrevs} % First use of acronyms are spelled out (like acromake)
+\usepackage[nolist]{acronym} % First use of acronyms are spelled out (can do plurals)
+\usepackage{numprint} % Print numbers with separators and exponent if necessary
+\usepackage{textcomp} % Use ``true'' symbols
+\usepackage{mathcomp} % Use ``true'' symbols
+\usepackage{upgreek} % Upright (instead of italic) Greek letters
+\usepackage{gensymb} % Typeset units of measurement
+\usepackage{fixmath} % Provide some useful maths macros
+\usepackage{xspace} % Stop macros eating spaces if I forget a '\' at the end
+\usepackage{multirow} % Allow rows in tables to be merged
+\usepackage[hang,ragged,bottom]{footmisc} % Footnote tricks
+\renewcommand{\hangfootparskip}{0\baselineskip} % Tweak footmisc
+\usepackage{fnpos} % Footnotes at bottom of page instead of end of page text
+\makeFNbottom % Override LaTeX default (footnotes at end of page text)
+\usepackage{booktabs,tabularx,colortbl} % Publication-quality tables
+\usepackage{comment} % Allow better comments than this one!
+\usepackage{desclist} % Extended "description" lists
+\usepackage{setspace}
+\usepackage{endnotes}
+\usepackage{wasysym} % Odd symbols and wingdings
+\usepackage{varioref} % Includes varioref package
+\usepackage{enumitem} % Special enumerations and itemizations
+%\usepackage[left=1.5cm,top=1.5cm,right=1.5cm]{geometry} % Adjust margins
+\usepackage[
+  %ps2pdf,
+  a4paper=true,
+  %ps2pdf=true,
+  pagebackref=false,
+  bookmarks=true,
+  bookmarksnumbered=true,
+  breaklinks=true,
+  linktocpage=true,
+  plainpages=false,
+  hyperindex=true,
+  hyperfootnotes=true,
+  hypertexnames=true,
+  draft = false % Needed for correct links to figures
+]{hyperref} % For hyperlinks in PDFs
+\hypersetup{
+  colorlinks = true, % Change to true for final version of PDF
+  linkcolor = black,
+  anchorcolor = black,
+  citecolor = black,
+  filecolor = black,
+  pagecolor = black,
+  urlcolor = black,
+} % Coloured hyperlinks in PDFs
+\hypersetup{
+  baseurl = {},
+  pdftitle = {Curriculum Vitae of Andrew John Lowe, BSc, MSc, PhD, MInstP},
+  pdfauthor =
+  Andrew John Lowe,
+  pdfsubject = 
+  Curriculum Vitae,
+  pdfkeywords =
+  Curriculum Vitae Andrew John Lowe
+} % Include document properties in PDFs
+\author{Andrew John Lowe}
+\title{Curriculum Vitae}
+
+\usepackage{breakurl} % Break long URLs (needs xkeyval.sty installed)
+
+\clubpenalty=9999 % Increase penalty for orphans and widowed words.
+\widowpenalty=9999 % Increase penalty for orphans and widowed words.
+
+\headheight=15pt
+
+%\usepackage{newchronologytimeline}
+%\usepackage{chronologyfix}
+
+\begin{document}
+%\selectlanguage{british} % Use British style of hyphenation
+\input{acronyms}
+\input{definitions}
+\input{social}
+
+\definecolor{color1}{rgb}{0.22,0.45,0.70}% light blue
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+\definecolor{color3}{rgb}{0.95,0.20,0.20}% red
+
+%%\setlength{\oddsidemargin}    {1.5cm}
+%%\setlength{\evensidemargin}   {0.0cm}  % for double-sided printout
+%%\setlength{\topmargin}        {-0.7cm}
+\setlength{\headheight}       {0.0cm}
+\setlength{\headsep}          {0.0cm}
+%%\setlength{\textwidth}        {15.0cm}
+%%\setlength{\textheight}       {24.5cm}
+\setlength{\itemsep}          {0cm}
+\setlength{\parsep}           {0cm}
+\setlength{\tabcolsep}        {0cm}
+\newlength{\longtabletopsep}
+\setlength{\longtabletopsep}  {-0.5\baselineskip}
+\newlength{\longtabletopsepspecial}
+\setlength{\longtabletopsepspecial}  {-1.5\baselineskip}
+\newlength{\firstcolumnwidth}
+\setlength{\firstcolumnwidth}{0.125\textwidth}
+\newlength{\secondcolumnwidth}
+\setlength{\secondcolumnwidth}{0.875\textwidth}
+\newcommand{\firstcolumndata}[1]{#1}
+\newcommand{\secondcolumndata}[1]{}
+
+\renewcommand{\baselinestretch}{1.5} % gives a 1.5 line spacing
+
+\tolerance=1000  % all 3 of these commands make LaTeX less fussy about what
+\hbadness=10000  % is a ``good'' length/width/height of a page
+\raggedbottom
+
+\pagenumbering{arabic}
+%%\setcounter{page}{1}
+
+% MarVoSym font for symbols
+\newcommand*{\marvosymbol}[1]{}
+\renewcommand*{\marvosymbol}[1]{%
+  {\fontfamily{mvs}\fontencoding{U}\fontseries{m}\fontshape{n}\selectfont\char#1}}
+\newcommand*{\addresssymbol}{}
+\newcommand*{\mobilesymbol}{}
+\newcommand*{\phonesymbol}{}
+\newcommand*{\faxsymbol}{}
+\newcommand*{\emailsymbol}{}
+\newcommand*{\homepagesymbol}{}
+\newcommand*{\footersymbol}{{{\rmfamily\textbullet}}}
+\renewcommand*{\mobilesymbol}{{\marvosymbol{72}}}
+\renewcommand*{\phonesymbol}{{\marvosymbol{84}}}
+\renewcommand*{\faxsymbol}{{\marvosymbol{117}}}
+\renewcommand*{\emailsymbol}{{\marvosymbol{66}}}
+\renewcommand*{\homepagesymbol}{{{\marvosymbol{205}}}}
+
+\newcommand*{\skype}{{\scriptsize{{\bfseries{\sffamily{skype}}}}}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\footnotesize{Dr. Andrew John Lowe\\\today}}
+%\\42 rue Blaise Pascal, 01630 Saint Genis Pouilly, France\\\phonesymbol~+33 450 205 096~\textperiodcentered~\mobilesymbol~+41 78 884 0330~\textperiodcentered~\emailsymbol~\htmladdnormallink{andrew.john.lowe@gmail.com}{mailto:andrew.john.lowe@gmail.com}~\textperiodcentered~\skype~andrewjohnlowe}%% \today
+%\cfoot{\footnotesize{Curriculum Vitae}}
+\rfoot{\footnotesize{Curriculum Vitae (hyperlinked)\\Page \thepage\ of \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.25pt}
+
+\setlength{\parindent}{0in} % No paragraph indentation
+\addtolength{\parskip}{0.5\baselineskip} % Add space between paragraphs
+%%\setlength{\skip\footins}{5\baselineskip}
+
+%\newbibliography{hep_papers}
+%\bibliographystyle{hep_papers}{unsrturl}
+%\newbibliography{npl_papers}
+%\bibliographystyle{npl_papers}{unsrturl}
+%\newbibliography{talks}
+%\bibliographystyle{talks}{unsrturl}
+
+%\input{cite_my_hep_papers} % cite_my_hep_papers.tex
+%\input{cite_my_npl_papers} % cite_my_npl_papers.tex
+%\input{cite_my_talks} % cite_my_talks.tex
+
+\hyphenation{academic employment}
+\hyphenation{inter-national}
+
+\begin{center}  
+  \input{CV_body}
+\end{center}
+%%\input{abstract}
+%%   \setbibref{} % Change name of Bibliography --- BLANK!
+%%   \bibliographystyle{unsrturl}
+%%\theendnotes
+\end{document}

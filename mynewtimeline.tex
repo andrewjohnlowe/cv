@@ -1,0 +1,61 @@
+\newcommand{\dotrule}[1]{%
+   \parbox[t]{#1}{\dotfill}}
+
+\newcommand*\fourlines[4]{\begin{tabular}{l}%
+    \small{#1} \\[-1.5ex]%
+    \small{#2} \\[-1.5ex]%
+    \small{#3} \\[-1.5ex]
+    \small{#4} 
+\end{tabular}}
+
+\newcommand*\threelines[3]{\begin{tabular}{l}%
+    \small{#1} \\[-1.5ex]%
+    \small{#2} \\[-1.5ex]%
+    \small{#3}
+\end{tabular}}
+
+\newcommand*\threelinesR[3]{\begin{tabular}{r}%
+    \small{#1} \\[-1.5ex]%
+    \small{#2} \\[-1.5ex]%
+    \small{#3}
+\end{tabular}}
+
+\newcommand*\twolines[2]{\begin{tabular}{l}%
+    \small{#1} \\[-1ex]%
+    \small{#2}
+\end{tabular}}
+
+\begin{flushleft}
+\textcolor{color1}{\bf CAREER TIMELINE}\\
+\end{flushleft}
+\vspace{\longtabletopsepspecial}
+\begin{longtable}{p{1.0\textwidth}}
+\arrayrulecolor{color1}
+\toprule
+\\
+\end{longtable}
+\vspace{-3.5\baselineskip}
+\begin{chronology}[5]{1993}{2017}{5ex}{\textwidth}
+\undertimeline[\decimaldate{5}{10}{1993}]{\decimaldate{1}{8}{1996}}{\threelines{\bf BSc student, physics}{Royal Holloway, U. of London, UK}{\small\it 2 years, 10 months}}{1.75}{red}
+\overtimeline[\decimaldate{1}{8}{1996}]{\decimaldate{1}{3}{1998}}{\threelines{}{Various temporary positions}{\small\it 1 year, 8 months}}{3.5}{blue}
+\overtimeline[\decimaldate{1}{3}{1998}]{\decimaldate{15}{9}{2000}}{\threelines{\bf Assistant Research Scientist}{National Physical Laboratory, UK}{\small\it 2 years, 7 months}}{1.75}{blue}
+\undertimeline[\decimaldate{24}{9}{2000}]{\decimaldate{15}{9}{2001}}{\threelines{\bf MSc student, particle physics}{Royal Holloway, U. of London, UK}{\small\it 1 year}}{3.5}{red}
+\undertimeline[\decimaldate{24}{9}{2001}]{\decimaldate{30}{3}{2008}}{\threelines{\bf PhD student, particle physics}{Royal Holloway, U. of London, UK}{\small\it 6 years, 6 months}}{1.75}{red}
+\overbracenote[\decimaldate{1}{11}{2002}]{\decimaldate{1}{4}{2004}}{\bf {Based at CERN}}{0.25}
+%\overblob[\decimaldate{1}{11}{2002}]{\decimaldate{1}{4}{2004}}{\bf {Based at CERN}}{0.25}
+\overblob[\decimaldate{1}{11}{2002}]{\decimaldate{1}{4}{2004}}{1}{0.25}
+%\overtimeline[\decimaldate{18}{2}{2008}]{\decimaldate{18}{9}{2009}}{\threelines{\bf Postdoctoral Fellow}{Indiana U., USA}{\small\it 1 year, 7 months}}{5}
+\overtimeline[\decimaldate{18}{2}{2008}]{\decimaldate{18}{9}{2009}}{\hspace{-17.0ex}\threelinesR{\bf Postdoctoral Fellow}{Indiana U., USA}{\small\it 1 year, 7 months}}{1.75}{blue}
+\overtimeline[\decimaldate{27}{3}{2010}]{\decimaldate{8}{10}{2012}}{\threelines{\bf Postdoctoral Fellow}{California State U., Fresno, USA}{\small\it 2 years, 6 months}}{3}{blue}
+\underbracenote[\decimaldate{18}{2}{2008}]{\decimaldate{8}{10}{2012}}{\bf {Based at CERN}}{1}
+%\underblob[\decimaldate{18}{2}{2008}]{\decimaldate{8}{10}{2012}}{\bf {Based at CERN}}{1}
+\underblob[\decimaldate{18}{2}{2008}]{\decimaldate{18}{9}{2009}}{1}{1}{blue}
+\underblob[\decimaldate{27}{3}{2010}]{\decimaldate{8}{10}{2012}}{1}{1}{blue}
+\overtimeline[\decimaldate{2}{9}{2013}]{\decimaldate{12}{10}{2016}}{\hspace{-0.25ex}\threelines{\bf Research Fellow}{Wigner RCP, Hungary}{\small\small\it 3 years, 1 month}}{1.75}{blue}
+%\overtimeline[\decimaldate{2}{9}{2013}]{\decimaldate{30}{1}{2014}}{\threelines{\bf Research Fellow}{Wigner RCP, Hungary}{\small\it 5 months}}{1.5}
+%-----\now{\decimaldate{17}{7}{2014}}{Now} % \today
+\toplabel{\decimaldate{1}{6}{1993}}{{\bf EMPLOYMENT}}
+\bottomlabel{\decimaldate{1}{6}{1993}}{{\bf EDUCATION}}
+\end{chronology}
+
+

@@ -1,0 +1,11 @@
+Performed statistical data analysis for the ALICE experiment at CERN, which recreates conditions that are believed to have existed a fraction of a second after the Big Bang. Used state-of-the-art machine learning to develop predictive classification algorithms for recognising particles based on their decay properties.
+
+Conducted the first-ever particle physics data analysis performed entirely in the R statistical programming language. Devised a novel fast data-driven feature selection method that identifies the variables with the best predictive power for a given classification or regression task. Developed pattern recognition algorithms that promise to improve discovery reach in searches for new particles at CERN and beyond.
+
+Pioneered implementation of reproducible research by writing the first-ever fully reproducible particle physics analysis paper. Founded the ALICE Statistics and Machine Learning Working Group. Co-organiser of the first CERN workshop dedicated to the use of machine learning in particle physics. Taught machine learning tutorials at Eötvös Loránd University and CERN. Engaged with local data science community via public outreach talks and conference presentations.
+
+Systematically investigated the potential benefit of hundreds of different predictor variables for a range of analyses using Monte Carlo simulations written in C++. Several new variables were found that provide significant improvements in sensitivity for a variety of Higgs boson and new particle searches.
+
+Developed an algorithm in C++ and Python for real-time particle identification in streaming data at an input rate of 1 GB/s. Optimised algorithm parameters and achieved excellent performance. This algorithm underpins a large part of the ATLAS experiment's physics programme by providing the data used for many analyses. It has been used for data-taking since 2010 and has currently processed 70 PB and recorded 3 PB for subsequent analysis.
+
+Provided technical and administrative support to a range of key activities relating to the maintenance and dissemination of the UK's national time scale.

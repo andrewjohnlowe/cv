@@ -1,0 +1,136 @@
+Andrew John Lowe
+Madarassy László utca 28, 1194 Budapest, Hungary
+B andrew.john.lowe@gmail.com · linkedin.com/in/andrewjohnlowe
+PROFESSIONAL PROFILE
+I am a British particle physicist, software developer, and aspiring data scientist with over a decade’s worth
+of experience working at the forefront of scientific research within large international collaborations. I
+spent several years based at the European Organization for Nuclear Research (CERN) in Geneva and
+was a member of the team that discovered the Higgs boson, the observation of which led to the award
+of the 2013 Nobel Prize in Physics. My core competencies include statistical data analysis, data mining,
+high-speed real-time data analysis (“Big Fast Data”), quantitative problem solving in cross-functional
+teams, software development and testing, Monte Carlo simulation, mathematical modelling, large-scale
+computing, data visualisation and interpretation of results. I am a co-author of more than 400 peerreviewed scientific publications and have spoken in numerous international workshops and conferences.
+EMPLOYMENT
+Sept. 2013– Scientific Research Fellow
+present
+Wigner Research Centre for Physics, Hungarian Academy of Sciences, Hungary
+Performed statistical data analysis for the ALICE experiment at CERN, which recreates conditions that are believed to have existed a fraction of a second after the Big Bang. Used
+state-of-the-art machine learning to develop predictive classification algorithms for recognising particles based on their decay properties.
+Conducted the first-ever particle physics data analysis performed entirely in the R statistical
+programming language. Devised a novel fast data-driven feature selection method that
+identifies the variables with the best predictive power for a given classification or regression
+task. Developed pattern recognition algorithms that promise to improve discovery reach in
+searches for new particles at CERN and beyond.
+Pioneered implementation of reproducible research by writing the first-ever fully reproducible particle physics analysis paper. Founded the ALICE Statistics and Machine Learning
+Working Group. Co-organiser of the first CERN workshop dedicated to the use of machine
+learning in particle physics. Taught machine learning tutorial at Eötvös Loránd University. Engaged with local data science community via public outreach talks and conference
+presentations.
+Apr. 2010–
+Oct. 2012
+
+Postdoctoral Fellow, Deputy Team Leader
+California State University, Fresno, USA (based at CERN)
+Systematically investigated the potential benefit of hundreds of different predictor variables
+for a range of analyses using Monte Carlo simulations written in C++. Several new variables
+were found that provide significant improvements in sensitivity for a variety of Higgs boson
+and new particle searches.
+
+Feb. 2008–
+Aug. 2009
+
+Postdoctoral Fellow
+Indiana University, USA (based at CERN)
+Developed an algorithm in C++ and Python for real-time particle identification in streaming
+data at an input rate of 1 GB/s. Optimised algorithm parameters and achieved excellent
+performance. This algorithm underpins a large part of the ATLAS experiment’s physics
+programme by providing the data used for many analyses. It has been used for data-taking
+since 2010 and has currently processed 70 PB and recorded 3 PB for subsequent analysis.
+
+Dr Andrew John Lowe
+20 January 2017
+
+Curriculum Vitae (hyperlinked)
+Page 1 of 2
+
+Mar. 1998– Assistant Research Scientist
+Sept. 2000 Centre for Time Metrology, National Physical Laboratory (NPL), UK
+Provided technical and administrative support to a range of key activities relating to the
+maintenance and dissemination of the UK’s national time scale.
+EDUCATION
+2001–2008
+
+PhD Particle Physics
+Royal Holloway, University of London, UK (including 17 months at CERN)
+Thesis title: Performance and robustness studies of the trigger for the ATLAS experiment
+Played a major role in the development of the core software and algorithms in C++ for a realtime multi-stage cascade classifier that filters and reduces the collision event data rate from
+60 TB/s to a manageable 300 MB/s that can be written to permanent storage. Performed
+detailed time profiling of the core software and devised improvements that made it 8 times
+faster, thus meeting a critical requirement of the system.
+
+2000–2001
+
+MSc Particle Physics
+Royal Holloway, University of London, UK
+Thesis title: Light Higgs ( H → bb̄) at the LHC
+Investigated the search potential of the H → bb̄ decay channel for a light Higgs boson using
+the ATLAS detector at CERN. First ever data-mining analysis of this type to be performed
+entirely in C++.
+
+1993–1996
+
+BSc (Hons) Physics
+Royal Holloway, University of London, UK
+
+TRANSFERABLE SKILLS
+
+• Communication: Invited speaker at numerous international conferences, frequent presentations in
+group meetings, report writing, public speaking, teamwork in a collaboration of about 3000 people
+• Problem solving: Capacity to lead independent research, understand and dissect complex problems
+and find creative solutions
+• Project management: Accustomed to handling parallel projects with strict deadlines
+COMPUTING SKILLS
+Data mining software:
+• ROOT (13 years’ experience)
+• RapidMiner (basic knowledge)
+• H2 O (basic knowledge)
+• Weka
+• Orange
+
+Programming languages:
+• C++ (16 years’ experience)
+• R (2.5 years’ experience)
+• Python (basic knowledge)
+• SQL (basic knowledge)
+• Octave
+• Bash shell scripting
+• FORTRAN
+• Pascal
+
+Software development:
+• Emacs
+• Sublime Text
+• RStudio
+• UML
+• Git/GitHub
+• CVS
+• Subversion (SVN)
+• Valgrind
+
+Documentation:
+• LATEX (16 years’ experience)
+• Markdown
+• Doxygen
+
+Operating systems:
+• Unix/Linux (16 years’ experience)
+• Microsoft Windows
+
+Other: object-oriented analysis and design, grid computing, CPU and time profiling, code optimisation,
+memory debugging. Over 25 years’ programming experience in various languages.
+Dr Andrew John Lowe
+20 January 2017
+
+Curriculum Vitae (hyperlinked)
+Page 2 of 2
+
+

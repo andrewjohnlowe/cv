@@ -1,0 +1,23 @@
+rm -f CV_Andrew_John_Lowe.aux CV_Andrew_John_Lowe.blg CV_Andrew_John_Lowe.lof CV_Andrew_John_Lowe.lot CV_Andrew_John_Lowe.pdf CV_Andrew_John_Lowe.bbl CV_Andrew_John_Lowe.dvi CV_Andrew_John_Lowe.log CV_Andrew_John_Lowe.out CV_Andrew_John_Lowe.ps CV_Andrew_John_Lowe.toc CV_Andrew_John_Lowe.ind CV_Andrew_John_Lowe.bib papers.bbl talks.bbl
+latex CV_Andrew_John_Lowe
+#bibtex CV_Andrew_John_Lowe
+bibtex hep_papers
+bibtex npl_papers
+bibtex talks
+#touch CV_Andrew_John_Lowe.bib
+#echo -E "\\begin{thebibliography}{999}" >> CV_Andrew_John_Lowe.bib
+#grep -v "thebibliography" CV_Andrew_John_Lowe.bbl >> CV_Andrew_John_Lowe.bib
+#echo -E "\\input{bib_note}" >> CV_Andrew_John_Lowe.bib
+#echo -E "\\end{thebibliography}" >> CV_Andrew_John_Lowe.bib
+#rm -f CV_Andrew_John_Lowe.bbl
+#mv CV_Andrew_John_Lowe.bib CV_Andrew_John_Lowe.bbl
+latex CV_Andrew_John_Lowe
+latex CV_Andrew_John_Lowe
+#makeindex  -s CV_Andrew_John_Lowe.ist  -o CV_Andrew_John_Lowe.ind CV_Andrew_John_Lowe
+#makeindex -s letter.ist -c -q $3  -o CV_Andrew_John_Lowe.ind CV_Andrew_John_Lowe
+latex CV_Andrew_John_Lowe
+dvips -o CV_Andrew_John_Lowe.ps -Ppdf -G0 -Z CV_Andrew_John_Lowe.dvi
+ps2pdf -sPAPERSIZE=a4 CV_Andrew_John_Lowe.ps
+cp CV_Andrew_John_Lowe.ps CV_Andrew_John_Lowe_H.ps
+cp CV_Andrew_John_Lowe.pdf CV_Andrew_John_Lowe_H.pdf
+evince CV_Andrew_John_Lowe.pdf
